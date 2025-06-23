@@ -1,0 +1,138 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Animated gradient background */
+body {
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: linear-gradient(270deg, #e3c2ff, #ffe8c2, #c2ffe3, #ffe2e2);
+  background-size: 800% 800%;
+  animation: gradientShift 18s ease infinite;
+  color: #222;
+}
+
+/* Gradient animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Page title */
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.25);
+}
+
+.refresh-btn {
+  background-color: #0077cc;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.refresh-btn:hover {
+  background-color: #005fa3;
+  transform: scale(1.03);
+}
+
+/* Recipe card styling */
+.card {
+  background-color: #fef5e7;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 720px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Headings inside card */
+.card h2,
+.card h3,
+.card h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.4;
+}
+
+.card h2 span,
+.card h3 span {
+  font-weight: 500;
+  color: #666;
+}
+
+/* Meal image */
+.card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Ingredients text */
+.ingredients {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #222;
+}
+
+.ingredients strong {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* Instructions list */
+.instructions ol {
+  padding-left: 1.2em;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.instructions li {
+  margin-bottom: 0.75em;
+}
+
+/* Source link */
+.card a {
+  color: #0077cc;
+  text-decoration: none;
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}

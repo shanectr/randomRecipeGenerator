@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Recipe</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <h1>Random Recipes</h1>
+    <button class="refresh-btn" onclick="location.reload()">Get Random Recipe</button>
+    <div class="card">
+      <h2><span>Meal Name:</span> <%= content.strMeal %></h2>
+      <img
+        src="<%= content.strMealThumb %>"
+        alt="image of meal"
+      />
+
+      <h3><span class=".font-normal">Meal Category: </span><%=content.strCategory%></h3>
+
+      <h3><span class=".font-normal">Meal Type: </span><%=content.strArea%></h3>
+
+      <%
+      // Step 1: Build the ingredients array
+      let ingredientsList = [];
+
+      for (let i = 1; i <= 20; i++) {
+        const ingredient = content[`strIngredient${i}`];
+        const measure = content[`strMeasure${i}`];
+
+        if (ingredient && ingredient.trim()) {
+          const formatted = `${measure ? measure.trim() : ""} ${ingredient.trim()}`.trim();
+          ingredientsList.push(formatted);
+        } else {
+          break; // stop when the first empty ingredient is found
+        }
+      }
+      %>
+
+      <!-- Step 2: Render inline list -->
+      <p class="ingredients">
+        <strong>Ingredients:</strong> <%= ingredientsList.join(", ") %>
+      </p>
+
+      <div class="instructions">
+        <ol>
+          <%
+            const raw = content.strInstructions
+              .replace(/&lt;br\s*\/?&gt;/gi, "<br>")  // decode escaped <br>
+              .replace(/\r?\n/g, "<br>");             // normalize \n to <br>
+      
+            // Split on <br> or punctuation+space followed by capital letter
+            const splitRaw = raw.split(/<br\s*\/?>|(?<=[.?!])\s+(?=[A-Z])/);
+      
+            const steps = splitRaw.map(step => 
+              step
+                .replace(/^Step\s*\d+[:.)]?\s*/i, "")  // Remove "Step 1", "Step 2:", etc.
+                .replace(/^\d+[:.)]?\s*/, "")         // Remove "1.", "2)", etc.
+                .trim()
+            ).filter(step => step.length > 0);
+      
+            steps.forEach(step => { 
+          %>
+            <li><%= step %></li>
+          <% }); %>
+        </ol>
+      </div>
+
+      <h4><a href="<%=content.strSource%>"><%=content.strSource%></a></h4>
+    </div>
+  </body>
+</html>
