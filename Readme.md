@@ -8,7 +8,7 @@ This is a simple web app built with Node.js, Express, and EJS that fetches a ran
 
 ## 📸 Preview
 
-## ![Screenshot](public/images/preview.png)
+## ![Screenshot](public/images/preview.jpg)
 
 ## 🚀 Features
 
@@ -32,12 +32,12 @@ This is a simple web app built with Node.js, Express, and EJS that fetches a ran
 
 ## 📦 Installation
 
-   ```bash
-   git clone https://github.com/shanectr/random-recipe-app.git
-   cd random-recipe-app
-   npm i
-   node index.js
-   ```
-   
+```bash
+git clone https://github.com/shanectr/random-recipe-app.git
+cd random-recipe-app
+npm i
+node index.js
+```
+
 Open your browser and visit:
 http://localhost:3000
